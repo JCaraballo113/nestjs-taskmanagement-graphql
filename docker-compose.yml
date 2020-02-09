@@ -29,7 +29,7 @@ services:
     pgAdmin:
         image: dpage/pgadmin4
         environment:
-            PGADMIN_DEFAULT_EMAIL: jcaraballo024@outlook.com
+            PGADMIN_DEFAULT_EMAIL: hello@hello.com
             PGADMIN_DEFAULT_PASSWORD: banana
         volumes:
             - pgadmin:/root/.pgadmin
