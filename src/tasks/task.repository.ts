@@ -1,8 +1,11 @@
-import { TaskStatus } from './enums/TaskStatus';
+import {
+    InternalServerErrorException,
+    NotFoundException
+} from '@nestjs/common';
 import { EntityRepository, Repository } from 'typeorm';
+import { TaskStatus } from './enums/TaskStatus';
 import { Task } from './entities/task.entity';
 import { CreateTaskDto } from './dtos/create-task.dto';
-import { InternalServerErrorException } from '@nestjs/common';
 
 @EntityRepository(Task)
 export class TaskRepository extends Repository<Task> {
@@ -13,6 +16,7 @@ export class TaskRepository extends Repository<Task> {
 
         return tasks;
     }
+
     async createTask({ title, description }: CreateTaskDto): Promise<Task> {
         const task = this.create({
             title,
