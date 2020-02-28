@@ -1,6 +1,13 @@
 import { TaskStatus } from '../enums/TaskStatus';
 import { ObjectType, Field, ID } from 'type-graphql';
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm';
+import {
+    Entity,
+    PrimaryGeneratedColumn,
+    Column,
+    BaseEntity,
+    ManyToOne
+} from 'typeorm';
+import User from '../../auth/entities/user.entity';
 
 @Entity()
 @ObjectType()
@@ -20,4 +27,11 @@ export class Task extends BaseEntity {
     @Column()
     @Field()
     status: TaskStatus;
+
+    @ManyToOne(
+        type => User,
+        user => user.tasks
+    )
+    @Field()
+    user: User;
 }

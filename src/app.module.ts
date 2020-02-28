@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { TasksModule } from './tasks/tasks.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmConfig } from './config/typeorm.config';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
     imports: [
@@ -12,7 +13,8 @@ import { typeOrmConfig } from './config/typeorm.config';
         GraphQLModule.forRoot({
             autoSchemaFile: 'schema.gql'
         }),
-        TasksModule
+        TasksModule,
+        AuthModule
     ],
     controllers: [AppController],
     providers: [AppService]
