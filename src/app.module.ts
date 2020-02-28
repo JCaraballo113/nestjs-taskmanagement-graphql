@@ -11,7 +11,8 @@ import { AuthModule } from './auth/auth.module';
     imports: [
         TypeOrmModule.forRoot(typeOrmConfig),
         GraphQLModule.forRoot({
-            autoSchemaFile: 'schema.gql'
+            autoSchemaFile: 'schema.gql',
+            context: ({ req }) => ({ req })
         }),
         TasksModule,
         AuthModule
